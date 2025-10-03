@@ -1,6 +1,6 @@
 import requests
 import pytest
-from config.conftest import base_url, Token, Token_negative, ID_Project, projectID, projectID_negative
+from conftest import base_url, Token, Token_negative, ID_Project, projectID, projectID_negative
 
 
 @pytest.fixture

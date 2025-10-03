@@ -19,7 +19,7 @@ football_stats = {
     }
 }
 def test_empty_dict():
-    assert len(empty_dict) == 1
+    assert len(empty_dict) == 0
 
 def test_read_value():
     count = football_stats.get("Число стран")

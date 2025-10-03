@@ -1,6 +1,7 @@
 import requests
 import pytest
-from config.conftest import base_url, Token, Token_negative, ID_Project, projectID, projectID_negative
+from conftest import base_url, Token, Token_negative, ID_Project, projectID, projectID_negative
+
 
 
 @pytest.fixture
@@ -36,5 +37,5 @@ def test_get_negative():
     }
     resp = requests.get(f'{base_url}/api-v2/projects/{projectID_negative}', json=payload, headers=headers)
     response_data = resp.json()
-    assert 'id' in response_data
-    assert resp.status_code == 200
+    assert 'error' in response_data
+    assert resp.status_code == 404

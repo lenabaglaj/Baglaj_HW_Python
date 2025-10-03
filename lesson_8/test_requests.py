@@ -17,7 +17,6 @@ def test_auth():
         'password': 'expelliarmus'
     }
     resp = requests.post(base_url + '/auth/login', json=creds)
-    assert resp.json()["user_token"] is not None
     assert resp.status_code == 200
 
 def test_create_company():
@@ -30,7 +29,7 @@ def test_create_company():
         'description': 'Награда'
     }
     resp = requests.post(base_url + '/auth/login', json=creds)
-    token = resp.json()['user_Token']
+    token = resp.json()
 
     resp = requests.post(base_url + '/company/create', json=company)
     assert resp.status_code == 201

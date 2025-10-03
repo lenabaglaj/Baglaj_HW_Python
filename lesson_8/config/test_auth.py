@@ -1,5 +1,5 @@
 import requests
-from config.conftest import base_url, Token, Token_negative, ID_Project, projectID, projectID_negative
+from conftest import base_url, Token, Token_negative, ID_Project, projectID, projectID_negative
 
 def test_auth_you():
     you = {

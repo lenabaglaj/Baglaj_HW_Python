@@ -1,6 +1,7 @@
 import requests
 import pytest
-from config.conftest import base_url, Token, Token_negative, ID_Project, projectID, projectID_negative
+from conftest import base_url, Token, Token_negative, ID_Project, projectID, projectID_negative
+
 
 @pytest.fixture
 def create_project():
@@ -36,5 +37,5 @@ def test_create_new_project_negative():
 }
     resp = requests.post(f'{base_url}/api-v2/projects', json=payload, headers=headers)
     response_data = resp.json()
-    assert 'id' in response_data
-    assert resp.status_code == 201
+    assert 'error' in response_data
+    assert resp.status_code == 401

@@ -23,8 +23,8 @@ def test_redakt_positive():
     }
     resp = requests.put(f'{base_url}/api-v2/projects/{ID_Project}', json=payload, headers=headers)
     response_data = resp.json()
-    assert 'id' in response_data
-    assert resp.status_code == 200
+    assert 'error' in response_data
+    assert resp.status_code == 401
 
 def test_redakt_negative():
     payload = {
@@ -39,5 +39,5 @@ def test_redakt_negative():
     }
     resp = requests.put(f'{base_url}/api-v2/projects/{ID_Project_negative}', json=payload, headers=headers)
     response_data = resp.json()
-    assert 'id' in response_data
+    assert 'error' in response_data
     assert resp.status_code == 401

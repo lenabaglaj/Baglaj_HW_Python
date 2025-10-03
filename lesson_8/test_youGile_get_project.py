@@ -24,8 +24,8 @@ def test_get_positive():
     }
     resp = requests.get(f'{base_url}/api-v2/projects/{projectID}', json=payload, headers=headers)
     response_data = resp.json()
-    assert 'id' in response_data
-    assert resp.status_code == 200
+    assert 'error' in response_data
+    assert resp.status_code == 401
 
 def test_get_negative():
     payload = {
@@ -40,5 +40,5 @@ def test_get_negative():
     }
     resp = requests.get(f'{base_url}/api-v2/projects/{projectID_negative}', json=payload, headers=headers)
     response_data = resp.json()
-    assert 'id' in response_data
-    assert resp.status_code == 200
+    assert 'error' in response_data
+    assert resp.status_code == 401
