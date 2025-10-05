@@ -34,7 +34,7 @@ def test_redakt_negative():
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {Token}'
     }
-    resp = requests.put(f'{base_url}/api-v2/projects/{ID_Pproject_negative}',
+    resp = requests.put(f'{base_url}/api-v2/projects/{projectID_negative}',
     json=payload, headers=headers, timeout=10)
     response_data = resp.json()
     assert 'error' in response_data
