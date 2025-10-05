@@ -7,8 +7,9 @@ def test_auth_you():
         'password': 'Alina2011',
         'name': 'поток_102.2'
 }
-    resp = requests.post(base_url + '/api-v2/auth/companies', json=you)
+    resp = requests.post(base_url + '/api-v2/auth/companies', json=you,
+    timeout=10)
     assert resp.status_code == 200
 
-    resp = requests.get(base_url + '/api-v2/projects', json=you)
+    resp = requests.get(base_url + '/api-v2/projects', json=you, timeout=10)
     body = resp.json()

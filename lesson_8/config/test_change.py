@@ -18,7 +18,7 @@ def test_redakt_positive():
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {Token}'
     }
-    resp = requests.put(f'{base_url}/api-v2/projects/{ID_Project}', json=payload, headers=headers)
+    resp = requests.put(f'{base_url}/api-v2/projects/{ID_Project}', json=payload, headers=headers, timeout=10)
     response_data = resp.json()
     assert 'id' in response_data
     assert resp.status_code == 200
@@ -34,7 +34,8 @@ def test_redakt_negative():
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {Token}'
     }
-    resp = requests.put(f'{base_url}/api-v2/projects/{ID_Project_negative}', json=payload, headers=headers)
+    resp = requests.put(f'{base_url}/api-v2/projects/{ID_Pproject_negative}',
+    json=payload, headers=headers, timeout=10)
     response_data = resp.json()
-    assert 'id' in response_data
-    assert resp.status_code == 401
+    assert 'error' in response_data
+    assert resp.status_code == 404

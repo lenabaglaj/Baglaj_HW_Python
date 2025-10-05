@@ -18,7 +18,7 @@ def test_create_new_project_positive():
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {Token}'
 }
-    resp = requests.post(f'{base_url}/api-v2/projects', json=payload, headers=headers)
+    resp = requests.post(f'{base_url}/api-v2/projects', json=payload, headers=headers, timeout=10)
     response_data = resp.json()
     assert 'id' in response_data
     assert resp.status_code == 201
@@ -35,7 +35,7 @@ def test_create_new_project_negative():
         'Content-Type': 'application/json',
         'Authorization': f'Bearer {Token_negative}'
 }
-    resp = requests.post(f'{base_url}/api-v2/projects', json=payload, headers=headers)
+    resp = requests.post(f'{base_url}/api-v2/projects', json=payload, headers=headers, timeout=10)
     response_data = resp.json()
     assert 'error' in response_data
     assert resp.status_code == 401
